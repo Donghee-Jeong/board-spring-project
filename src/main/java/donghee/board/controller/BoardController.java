@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -37,7 +34,7 @@ public class BoardController {
         log.info("Add Post={}", post);
         boardService.add(post);
         redirectAttributes.addAttribute("postId", post.getId());
-        redirectAttributes.addAttribute("status", true);
+        redirectAttributes.addAttribute("addStatus", true);
         return "redirect:/post/{postId}";
     }
 
@@ -49,6 +46,13 @@ public class BoardController {
         return "/post/post";
     }
 
+    @DeleteMapping("/post/{postId}")
+    public String deletePost(@PathVariable("postId") Long postId, RedirectAttributes redirectAttributes){
+        boardService.delete(boardService.findById(postId));
+        redirectAttributes.addAttribute("deleteStatus", true);
+        return "redirect:/";
+    }
+
     @GetMapping("/post/{postId}/edit")
     public String editForm(@PathVariable("postId") Long postId, Model model) {
         Post post = boardService.findById(postId);
@@ -57,12 +61,12 @@ public class BoardController {
         return "/post/editForm";
     }
 
-    @PostMapping("/post/{postId}/edit")
+    @PutMapping("/post/{postId}/edit")
     public String editPost(@ModelAttribute Post editedPost, RedirectAttributes redirectAttributes) {
         Post post = boardService.edit(editedPost);
         log.info("Edit Post={}", post);
         redirectAttributes.addAttribute("postId", post.getId());
-        redirectAttributes.addAttribute("status", true);
+        redirectAttributes.addAttribute("editStatus", true);
         return "redirect:/post/{postId}";
     }
 }
