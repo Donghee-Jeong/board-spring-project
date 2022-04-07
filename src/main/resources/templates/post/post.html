@@ -6,6 +6,8 @@
 </head>
 <body>
     <h2>게시글 상세</h2>
+    <h3 th:if="${param.addStatus}" th:text="'생성 완료!'"></h3>
+    <h3 th:if="${param.editStatus}" th:text="'수정 완료!'"></h3>
     <div>
         <label for="postId">게시글 번호</label>
         <input type="text" id="postId" name="postId" th:value="${post.id}" readonly>
@@ -20,6 +22,11 @@
     </div>
     <div>
         <button th:onclick="|location.href='@{/post/{postId}/edit(postId=${post.id})}'|">수정</button>
+    </div>
+    <div>
+        <form th:action="@{|/post/${post.id}|}" th:method="delete">
+        <button type="submit">삭제</button>
+        </form>
     </div>
     <div>
         <button th:onclick="|location.href='@{/}'|">돌아가기</button>
