@@ -11,4 +11,5 @@ public interface BoardService {
     List<Post> findByContent(String content);
     List<Post> findAll();
     Post edit(Post editedPost);
+    Post delete(Post post);
 }

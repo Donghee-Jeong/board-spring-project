@@ -41,4 +41,9 @@ public class BoardServiceImpl implements BoardService {
     public Post edit(Post editedPost) {
         return boardRepository.update(editedPost);
     }
+
+    @Override
+    public Post delete(Post post) {
+        return boardRepository.remove(post);
+    }
 }
