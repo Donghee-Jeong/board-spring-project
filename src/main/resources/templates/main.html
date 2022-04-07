@@ -16,10 +16,10 @@
         <tbody>
             <tr th:each="post : ${postList}">
                 <td th:text="${post.id}"></td>
-                <td th:text="${post.title}"></td>
+                <td><a th:href="@{/post/{postId}(postId=${post.id})}" th:text="${post.title}"></a></td>
             </tr>
         </tbody>
     </table>
-    <a th:href="@{/create}">새로 만들기</a>
+    <a th:href="@{/post/add}">새로 만들기</a>
 </body>
 </html>
