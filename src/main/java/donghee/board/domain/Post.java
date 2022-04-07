@@ -14,4 +14,9 @@ public class Post {
         this.title = title;
         this.content = content;
     }
+
+    public void editPost(Post post){
+        this.title = post.getTitle();
+        this.content = post.getContent();
+    }
 }
