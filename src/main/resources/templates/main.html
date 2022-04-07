@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1>게시판</h1>
+    <h2 th:if="${param.deleteStatus}" th:text="'삭제 완료!'"></h2>
     <table>
         <thead>
             <tr>
