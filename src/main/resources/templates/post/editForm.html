@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>게시글 수정하기</h1>
-<form th:action="@{/post/${post.id}/edit}" method="post">
+<form th:action="@{/post/${post.id}/edit}" th:method="put">
     <label for="id">게시물 번호</label>
     <input type="text" id="id" name="id" th:value="${post.id}" readonly>
     <label for="title">게시물 제목</label>
