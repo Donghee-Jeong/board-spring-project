@@ -13,7 +13,7 @@ public class BoardServiceImpl implements BoardService {
     final private BoardRepository boardRepository;
 
     @Override
-    public Post create(Post post) {
+    public Post add(Post post) {
         return boardRepository.save(post);
     }
 
@@ -35,5 +35,10 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public List<Post> findAll() {
         return boardRepository.findAll();
+    }
+
+    @Override
+    public Post edit(Post editedPost) {
+        return boardRepository.update(editedPost);
     }
 }

@@ -28,7 +28,7 @@ class BoardServiceImplTest {
     void create() {
         Post post = new Post("title", "content");
 
-        Post createdPost = boardService.create(post);
+        Post createdPost = boardService.add(post);
 
         assertThat(createdPost).isEqualTo(post);
     }
@@ -37,7 +37,7 @@ class BoardServiceImplTest {
     void findById() {
         Post post = new Post("title", "content");
 
-        Post createdPost = boardService.create(post);
+        Post createdPost = boardService.add(post);
 
         assertThat(createdPost.getId()).isEqualTo(post.getId());
     }
@@ -47,8 +47,8 @@ class BoardServiceImplTest {
         Post post1 = new Post("title1", "content1");
         Post post2 = new Post("title2", "content2");
 
-        boardService.create(post1);
-        boardService.create(post2);
+        boardService.add(post1);
+        boardService.add(post2);
 
         List<Post> findByTitlePost1 = boardService.findByTitle("title");
         List<Post> findByTitlePost2 = boardService.findByTitle("2");
@@ -65,8 +65,8 @@ class BoardServiceImplTest {
         Post post1 = new Post("title1", "content1");
         Post post2 = new Post("title2", "content2");
 
-        boardService.create(post1);
-        boardService.create(post2);
+        boardService.add(post1);
+        boardService.add(post2);
 
         List<Post> findByContent1 = boardService.findByContent("content");
         List<Post> findByContent2 = boardService.findByContent("2");
@@ -83,8 +83,8 @@ class BoardServiceImplTest {
         Post post1 = new Post("title1", "content1");
         Post post2 = new Post("title2", "content2");
 
-        boardService.create(post1);
-        boardService.create(post2);
+        boardService.add(post1);
+        boardService.add(post2);
 
         List<Post> Posts = boardService.findAll();
         assertThat(Posts.size()).isEqualTo(2);
