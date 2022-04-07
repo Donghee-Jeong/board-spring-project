@@ -42,6 +42,13 @@ public class MemoryBoardRepository implements BoardRepository{
         return new ArrayList<>(store.values());
     }
 
+    @Override
+    public Post update(Post editedPost) {
+        Post post = store.get(editedPost.getId());
+        post.editPost(editedPost);
+        return post;
+    }
+
     public void clearStore(){
         store.clear();
     }

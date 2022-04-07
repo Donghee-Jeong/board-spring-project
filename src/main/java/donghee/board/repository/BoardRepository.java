@@ -10,4 +10,5 @@ public interface BoardRepository {
     List<Post> findByTitle(String title);
     List<Post> findByContent(String content);
     List<Post> findAll();
+    Post update(Post editedPost);
 }
