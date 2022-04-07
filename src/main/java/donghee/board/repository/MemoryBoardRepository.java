@@ -49,6 +49,11 @@ public class MemoryBoardRepository implements BoardRepository{
         return post;
     }
 
+    @Override
+    public Post remove(Post post) {
+        return store.remove(post.getId());
+    }
+
     public void clearStore(){
         store.clear();
     }
